@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+*.pyo
+*.pyd
+
+# Virtual environments
+airflow_env/
+venv/
+env/
+.venv/
+
+# Airflow
+logs/
+airflow.db
+airflow-webserver.pid
+unittest.cfg
+
+# dbt
+netflix_dbt/target/
+netflix_dbt/dbt_modules/
+dbt_modules/
+target/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor configs
+.vscode/
+.idea/
+*.swp
+
+# nohup output
+nohup.out
+
+# Environment variables
+.env
+.env.*
+
+# Practice folders (OPTIONAL - uncomment if you want to ignore)
+# Scripts/
+# sql/
+
+
+# Practice folders (don't include in GitHub)
+Script/
+sql/
+
+# Local datasets
+Datasets/
+
+# Environment files
+.env
+
+# Editor/IDE settings
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Airflow server logs
+nohup.out
+airflow-webserver.out

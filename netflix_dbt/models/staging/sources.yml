@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: netflix
+    database: AUTO_NETFLIX_DB
+    schema: AUTO_OGDATA
+    tables:
+      - name: netflix_data

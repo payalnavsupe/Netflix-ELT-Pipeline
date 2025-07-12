@@ -1,0 +1,15 @@
+# Airflow
+apache-airflow==2.8.1
+apache-airflow-providers-snowflake==4.1.0
+
+# Snowflake
+snowflake-connector-python==3.16.0
+snowflake-sqlalchemy==1.7.6
+
+# dbt
+dbt-core==1.10.3
+dbt-snowflake==1.9.4
+
+# Python utilities
+python-dotenv==1.1.1
+pandas==2.3.1

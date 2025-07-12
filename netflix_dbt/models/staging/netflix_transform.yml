@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: netflix_transform
+    description: "Cleaned Netflix data with formatted dates and deduplicated rows"
+    columns:
+      - name: show_id
+        description: "Unique identifier for each Netflix title"
+        tests:
+          - unique
+          - not_null
+      - name: type
+        description: "Type of content: Movie or TV Show"
+        tests:
+          - accepted_values:
+              values: ['Movie', 'TV Show']
