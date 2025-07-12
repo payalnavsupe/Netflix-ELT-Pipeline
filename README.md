@@ -1,4 +1,4 @@
-Netflix End to End Automated ELT Data Pipeline: Airflow, Snowflake, and dbt
+# Netflix End to End Automated ELT Data Pipeline: Airflow, Snowflake, and dbt
 
 
 1. Introduction : This project demonstrates the implementation of a fully automated data pipeline using Apache Airflow, Snowflake, and dbt (data build tool). The pipeline extracts, transforms, and loads (ETL) Netflix data into Snowflake, performs transformations using dbt, and prepares the data for analysis.
