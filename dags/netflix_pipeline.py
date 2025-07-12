@@ -11,8 +11,9 @@ import pandas as pd
 import snowflake.connector
 
 
-CSV_FILE_PATH = '/Users/payal/Documents/Data Analyst/Projects/Netflix/Datasets/Cleaned_NetflixData_CSV.csv'
-HASH_FILE_PATH = '/Users/payal/Documents/Data Analyst/Projects/Netflix/Datasets/hash_file.txt'
+# Paths to CSV and hash file
+CSV_FILE_PATH = '/path/to/your/Cleaned_NetflixData_CSV.csv'
+HASH_FILE_PATH = '/path/to/your/hash_file.txt'
 
 # Function to compute file hash
 def compute_file_hash(file_path):
@@ -49,12 +50,12 @@ def extract_data():
 def load_to_snowflake():
     print("Connecting to Snowflake...")
     conn = snowflake.connector.connect(
-        user='payalsnavsupe',
-        password='Payalsnowflake@1',
-        account='xeuzfvm-xl48714',
-        warehouse='COMPUTE_WH',
-        database='AUTO_NETFLIX_DB',
-        schema='AUTO_OGDATA',
+        user='{{ YOUR_USERNAME }}',
+        password='{{ YOUR_PASSWORD }}',
+        account='{{ YOUR_SNOWFLAKE_ACCOUNT }}',
+        warehouse='{{ YOUR_WAREHOUSE }}',
+        database='{{ YOUR_DATABASE }}',
+        schema='{{ YOUR_SCHEMA }}',
     )
     cs = conn.cursor()
     try:
@@ -98,7 +99,7 @@ with DAG(
 
     # Task 2: Create Table in Snowflake
     create_table_sql = """
-    CREATE TABLE IF NOT EXISTS AUTO_NETFLIX_DB.AUTO_OGDATA.NETFLIX_DATA (
+    CREATE TABLE IF NOT EXISTS {{ YOUR_DATABASE }}.{{ YOUR_SCHEMA }}.NETFLIX_DATA (
         show_id STRING,
         type STRING,
         title STRING,
@@ -125,21 +126,16 @@ with DAG(
 
     # Task 4: Run dbt transformation
     run_dbt = BashOperator(
-    task_id='run_dbt_transformation',
-    bash_command='cd "/Users/payal/Documents/Data Analyst/Projects/Netflix_Auto/netflix_dbt" && dbt run',
-    trigger_rule=TriggerRule.NONE_FAILED_MIN_ONE_SUCCESS
-)
-
+        task_id='run_dbt_transformation',
+        bash_command='cd "/path/to/your/netflix_dbt" && dbt run',
+        trigger_rule=TriggerRule.NONE_FAILED_MIN_ONE_SUCCESS
+    )
 
     # Dummy skip task
     skip_task = EmptyOperator(task_id='skip_task')
 
-     # Set task dependencies
-    # Set dependencies
-    # Change the dependencies
-check_file_task >> [extract_task, skip_task]
-extract_task >> create_table >> load_data
-[load_data, skip_task] >> run_dbt
-
-
+    # Set task dependencies
+    check_file_task >> [extract_task, skip_task]
+    extract_task >> create_table >> load_data
+    [load_data, skip_task] >> run_dbt
 
