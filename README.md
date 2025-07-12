@@ -45,28 +45,28 @@ Netflix_Auto/
 
 7. Setup Instructions
 
-1) Clone the Repository
-git clone https://github.com/payalnavsupe/netflix-pipeline.git
-cd netflix-pipeline
+1) Clone the Repository :
+- git clone https://github.com/payalnavsupe/netflix-pipeline.git
+- cd netflix-pipeline
 
-2) Set Up Virtual Environment
-python -m venv airflow_env
-source airflow_env/bin/activate
+3) Set Up Virtual Environment :
+- python -m venv airflow_env
+- source airflow_env/bin/activate
 
-3) Install Dependencies
-pip install -r requirements.txt
+4) Install Dependencies :
+- pip install -r requirements.txt
 
-4) Configure Airflow
+5) Configure Airflow :
 Initialize Airflow:
-airflow db init
-Start the Airflow webserver and scheduler.
+- airflow db init
+- Start the Airflow webserver and scheduler.
 
-5) Set Up Snowflake
-Create a database, schema, and warehouse as required.
-Update connection details in Airflow.
+6) Set Up Snowflake :
+- Create a database, schema, and warehouse as required.
+- Update connection details in Airflow.
 
-6) Run the Pipeline
-Trigger the DAG from the Airflow UI or CLI.
+7) Run the Pipeline :
+- Trigger the DAG from the Airflow UI or CLI.
 
 8. Outcomes :
 
